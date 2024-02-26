@@ -35,4 +35,13 @@
         android:background="@color/grey"
         android:visibility="gone"/>
 
+    <Button
+        android:layout_width="@dimen/dimens_30dp"
+        android:layout_height="@dimen/dimens_30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/ic_current_location"
+        android:layout_margin="@dimen/dimens_10dp"
+        android:id="@+id/actMain_buttonMoveCurrentLocation"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

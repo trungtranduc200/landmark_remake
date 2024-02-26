@@ -12,6 +12,7 @@ import android.widget.SearchView.OnQueryTextListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.landmarkremake.adapter.AdapterSearch
@@ -82,42 +83,20 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, OnSaveNoteListener
                 binding.actMainRlSearchAddress.visibility = View.GONE
             }
         }
+
+        binding.actMainButtonMoveCurrentLocation.setOnClickListener {
+            moveCameraToCurrentLocation()
+        }
+
         binding.map.setOnClickListener{
             binding.actMainSvAddress.clearFocus()
         }
     }
 
-//    private fun getCurrentLocation() {
-//        if (ActivityCompat.checkSelfPermission(
-//                this,
-//                android.Manifest.permission.ACCESS_FINE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                this,
-//                android.Manifest.permission.ACCESS_COARSE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-//                permissionCode
-//            )
-//            return
-//        }
-//
-//        fusedLocationProviderClient.lastLocation.addOnSuccessListener {
-//            if (it != null) {
-//                currentLocation = it
-//                val mapFragment: SupportMapFragment =
-//                    supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-//                mapFragment.getMapAsync(this)
-//                Toast.makeText(
-//                    this,
-//                    currentLocation.latitude.toString() + " " + currentLocation.longitude.toString(),
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }
-//    }
+    private fun moveCameraToCurrentLocation() {
+        val latLng = LatLng(currentLocation.latitude, currentLocation.longitude)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+    }
 
     private fun getCurrentLocation(){
         if (ActivityCompat.checkSelfPermission(
@@ -134,14 +113,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, OnSaveNoteListener
             )
             return
         }
-        val task: Task<Location> = fusedLocationProviderClient.lastLocation
+        val task = fusedLocationProviderClient.lastLocation
         task.addOnSuccessListener { location ->
             if (location != null) {
                 currentLocation = location
                 Toast.makeText(this, currentLocation.latitude.toString() + "" + currentLocation.longitude.toString(), Toast.LENGTH_SHORT).show();
                 val supportMapFragment =
-                    (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)!!
-                supportMapFragment.getMapAsync(this@MainActivity)
+                    (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)
+                supportMapFragment?.getMapAsync(this@MainActivity)
             }
         }
     }
@@ -157,23 +136,21 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, OnSaveNoteListener
                 getCurrentLocation()
             }
         }
-//        if (requestCode == permissionCode) {
-//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                getCurrentLocation();
-//            }
-//        }
     }
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onMapReady(p0: GoogleMap) {
         googleMap = p0
+
+        googleMap.uiSettings.isMyLocationButtonEnabled = true
+
         val latLng = LatLng(currentLocation.latitude, currentLocation.longitude)
         val markerOptions = MarkerOptions().position(latLng).title("Current Location")
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-        currentMarker = googleMap.addMarker(markerOptions)
+        p0.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+        p0.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        currentMarker = p0.addMarker(markerOptions)
 
-        googleMap.setOnMarkerClickListener(GoogleMap.OnMarkerClickListener {
+        p0.setOnMarkerClickListener(GoogleMap.OnMarkerClickListener {
             if (it == currentMarker) {
                 DialogUtils.createNote(this, "", "", true) { note ->
                     GlobalScope.launch(Dispatchers.Main) {

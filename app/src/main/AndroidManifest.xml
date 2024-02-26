@@ -27,7 +27,7 @@
             android:value="AIzaSyD3eZpG3nZ1dSjePv95_0ShTWXNL_htd2A" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.NoActionBar">

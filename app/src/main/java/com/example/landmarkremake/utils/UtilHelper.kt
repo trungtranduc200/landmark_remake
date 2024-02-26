@@ -6,7 +6,7 @@ import java.util.Date
 import java.util.Locale
 
 object UtilHelper {
-    fun getUid():String {
+    fun getUid(): String {
         return FirebaseAuth.getInstance().uid ?: "uid"
     }
 

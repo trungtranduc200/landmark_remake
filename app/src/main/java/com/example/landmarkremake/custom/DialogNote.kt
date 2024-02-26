@@ -1,18 +1,22 @@
 package com.example.landmarkremake.custom
 
+import android.R
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
+import android.view.ViewGroup
+import android.view.Window
 import com.example.landmarkremake.databinding.LayoutInputNoteBinding
 import com.example.landmarkremake.model.Note
 
-open class DialogNote(context: Context) : AlertDialog(context) {
+
+open class DialogNote(context: Context) : Dialog(context) {
     private var context: Context
     private lateinit var binding: LayoutInputNoteBinding
     private var onClickSave: () -> Unit = {}
     private var callbackNote: ((Note) -> Unit)? = null
-    private lateinit var name:String
+    private lateinit var name: String
     private lateinit var note: String
     private var update: Boolean = true
 
@@ -25,13 +29,13 @@ open class DialogNote(context: Context) : AlertDialog(context) {
         return this
     }
 
-    fun setContent(name:String,note:String):DialogNote{
+    fun setContent(name: String, note: String): DialogNote {
         this.name = name
         this.note = note
         return this
     }
 
-    fun isUpdate(update:Boolean){
+    fun isUpdate(update: Boolean) {
         this.update = update
     }
 
@@ -43,8 +47,12 @@ open class DialogNote(context: Context) : AlertDialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutInputNoteBinding.inflate(layoutInflater)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
-        window?.setBackgroundDrawableResource(android.R.color.transparent)
+        window?.setBackgroundDrawableResource(R.color.transparent)
+        val width = ViewGroup.LayoutParams.MATCH_PARENT
+        val height = ViewGroup.LayoutParams.WRAP_CONTENT
+        window!!.setLayout(width, height)
         setCanceledOnTouchOutside(true)
         init()
         onClick()
@@ -54,11 +62,11 @@ open class DialogNote(context: Context) : AlertDialog(context) {
         binding.layoutInputNoteEdtNote.setText(note)
         binding.layoutInputNoteEdtName.setText(name)
 
-        if (update){
+        if (update) {
             binding.layoutInputNoteEdtNote.isEnabled = true
             binding.layoutInputNoteEdtName.isEnabled = true
             binding.layoutInputNoteBtnSaveNote.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.layoutInputNoteEdtNote.isEnabled = false
             binding.layoutInputNoteEdtName.isEnabled = false
             binding.layoutInputNoteBtnSaveNote.visibility = View.GONE

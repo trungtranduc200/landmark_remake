@@ -11,23 +11,26 @@ import com.example.landmarkremake.databinding.ItemSearchBinding
 import com.example.landmarkremake.model.Note
 import java.util.Locale
 
-class AdapterSearch():RecyclerView.Adapter<AdapterSearch.ViewHolder>(), Filterable{
-    private var filteredList:List<Note> = listOf()
-    private var listData:List<Note> = listOf()
-    private var onClick:(note:Note) -> Unit = {}
-    class ViewHolder(val itemSearchBinding:ItemSearchBinding):RecyclerView.ViewHolder(itemSearchBinding.root)
+class AdapterSearch() : RecyclerView.Adapter<AdapterSearch.ViewHolder>(), Filterable {
+    private var filteredList: List<Note> = listOf()
+    private var listData: List<Note> = listOf()
+    private var onClick: (note: Note) -> Unit = {}
+
+    class ViewHolder(val itemSearchBinding: ItemSearchBinding) :
+        RecyclerView.ViewHolder(itemSearchBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemSearchBinding = ItemSearchBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val itemSearchBinding =
+            ItemSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemSearchBinding)
     }
 
-    fun setData(listData:List<Note>){
+    fun setData(listData: List<Note>) {
         this.filteredList = listData
         this.listData = listData
     }
 
-    fun onItemClick(onClick:(note:Note)->Unit){
+    fun onItemClick(onClick: (note: Note) -> Unit) {
         this.onClick = onClick
     }
 
@@ -36,7 +39,7 @@ class AdapterSearch():RecyclerView.Adapter<AdapterSearch.ViewHolder>(), Filterab
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position>=0 && position <filteredList.size){
+        if (position >= 0 && position < filteredList.size) {
             val currentItem = filteredList[position]
             holder.itemSearchBinding.itemSearchTvName.text = currentItem.note
             holder.itemView.setOnClickListener {

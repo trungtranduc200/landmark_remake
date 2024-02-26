@@ -26,7 +26,7 @@ object NoteRepository {
         }
     }
 
-    suspend fun getData():List<Note>{
+    suspend fun getData(): List<Note> {
         val dataList = mutableListOf<Note>()
         try {
             val data = db.collection(Constants.DB_NAME)
@@ -34,8 +34,8 @@ object NoteRepository {
                 .collection(Constants.LIST_NOTE)
                 .get()
                 .await()
-            if (data.documents.isNotEmpty()){
-                for (item in data){
+            if (data.documents.isNotEmpty()) {
+                for (item in data) {
                     val dataItem = item.toObject(Note::class.java)
                     dataList.add(dataItem)
                 }

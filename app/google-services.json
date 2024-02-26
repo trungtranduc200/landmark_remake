@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "185977456380",
+    "project_id": "landmark-remake",
+    "storage_bucket": "landmark-remake.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185977456380:android:c4178c64897f3a4b40b979",
+        "android_client_info": {
+          "package_name": "com.example.landmarkremake"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-hkh_1rJL6XCXulel1-3mSCpHZWB_1vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

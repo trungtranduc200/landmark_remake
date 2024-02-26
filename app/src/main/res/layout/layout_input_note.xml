@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_boder_dialog_input_note"
+    android:padding="@dimen/dimens_10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_create_note"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/layoutInputNote_tvCreateNote"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_20sp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_width="@dimen/dimens_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layoutInputNote_tvCreateNote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/background_boder_input_text"
+        android:layout_marginTop="@dimen/dimens_10dp"
+        android:layout_marginStart="@dimen/dimens_10dp"
+        android:layout_marginEnd="@dimen/dimens_10dp"
+        android:id="@+id/layoutInputNote_edtName"
+        android:padding="@dimen/dimens_10dp"
+        android:hint="@string/tv_name"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"/>
+
+    <EditText
+        android:layout_width="@dimen/dimens_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layoutInputNote_edtName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/background_boder_input_text"
+        android:layout_marginTop="@dimen/dimens_10dp"
+        android:layout_marginStart="@dimen/dimens_10dp"
+        android:layout_marginEnd="@dimen/dimens_10dp"
+        android:id="@+id/layoutInputNote_edtNote"
+        android:padding="@dimen/dimens_10dp"
+        android:hint="@string/tv_note"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"/>
+
+    <TextView
+        android:layout_width="@dimen/dimens_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layoutInputNote_edtNote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dimens_10dp"
+        android:layout_marginStart="@dimen/dimens_10dp"
+        android:layout_marginEnd="@dimen/dimens_10dp"
+        android:background="@drawable/background_button_save_note"
+        android:text="@string/tv_save"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/dimens_10dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_15sp"
+        android:layout_marginBottom="@dimen/dimens_10dp"
+        android:id="@+id/layoutInputNote_btnSaveNote"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

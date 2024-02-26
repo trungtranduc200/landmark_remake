@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.LandmarkRemake" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="SearchText" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <!-- Text color -->
+        <item name="android:editTextColor">@color/black</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+</resources>

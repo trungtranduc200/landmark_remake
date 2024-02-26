@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Landmark Remake</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_note">Note</string>
+    <string name="tv_create_note">Create Note</string>
+    <string name="tv_save">Save</string>
+    <string name="tv_search">Search</string>
+</resources>

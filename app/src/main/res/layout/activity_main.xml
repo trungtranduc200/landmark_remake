@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/activity_main" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="@string/tv_search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:iconifiedByDefault="false"
+        android:layout_margin="@dimen/dimens_10dp"
+        android:elevation="@dimen/dimens_5dp"
+        android:background="@drawable/background_layout_search"
+        android:theme="@style/SearchText"
+        android:id="@+id/actMain_svAddress"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="@dimen/dimens_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/actMain_svAddress"
+        app:layout_constraintStart_toStartOf="@id/actMain_svAddress"
+        app:layout_constraintEnd_toEndOf="@id/actMain_svAddress"
+        android:id="@+id/actMain_rlSearchAddress"
+        android:background="@color/grey"
+        android:visibility="gone"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
